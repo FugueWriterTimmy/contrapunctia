@@ -5,61 +5,109 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Teokratija Kontrapunktija</title>
   <style>
+    :root {
+      --color-primary-blue: #4484ce;    /* Top stripe of the flag */
+      --color-deep-teal: #00565b;       /* Middle stripe of the flag */
+      --color-bg-light: #f4f7f6;        /* Subtle grayish-teal tint background */
+      --color-white: #ffffff;
+      --color-text-dark: #1c2d30;       /* High-contrast dark slate for reading */
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      background: #f6f6f6;
+      background: var(--color-bg-light);
+      color: var(--color-text-dark);
       text-align: center;
     }
+
     header {
-      background: #3b3b98;
-      color: white;
-      padding: 20px;
-      font-size: 26px;
-      font-weight: bold;
+      background: var(--color-primary-blue);
+      color: var(--color-white);
+      padding: 40px 20px;
     }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    header p {
+      margin: 10px 0 0 0;
+      font-size: 16px;
+      opacity: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
     .nav {
-      background: #dcdcff;
-      padding: 15px;
+      background: var(--color-deep-teal);
+      padding: 12px 15px;
       display: flex;
       justify-content: center;
-      gap: 15px;
+      gap: 20px;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     }
+
     .nav button {
-      background: #4b4bd1;
-      color: white;
-      border: none;
-      padding: 10px 18px;
-      font-size: 16px;
-      border-radius: 8px;
+      background: transparent;
+      color: var(--color-white);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 8px 18px;
+      font-size: 15px;
+      font-weight: 500;
+      border-radius: 6px;
       cursor: pointer;
-      transition: 0.2s;
+      transition: all 0.2s ease-in-out;
     }
+
     .nav button:hover {
-      background: #22227a;
+      background: var(--color-white);
+      color: var(--color-deep-teal);
+      border-color: var(--color-white);
     }
+
     .container {
-      max-width: 800px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
+      max-width: 750px;
+      margin: 50px auto;
+      background: var(--color-white);
+      padding: 40px;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      font-size: 18px;
-      line-height: 1.6;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+      text-align: left;
+    }
+
+    .container h2 {
+      color: var(--color-deep-teal);
+      margin-top: 0;
+      font-size: 24px;
+      border-bottom: 2px solid var(--color-bg-light);
+      padding-bottom: 12px;
+    }
+
+    .container p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #3d4f52;
     }
   </style>
 </head>
 <body>
-  <header>Privitanje do Oficialnogo Sajta Kontrapunktije</header>
+
+  <header>
+    <h1>Kontrapunktija</h1>
+    <p>Suverenna Teokratija</p>
+  </header>
 
   <div class="nav">
-    <button onclick="window.location='izkazanje.html'">Izkazanje</button>
-    <button onclick="window.location='deklaracija.html'">Deklaracija Nezaležnosti</button>
-    <button onclick="window.location='vlada.html'">Vlada & Administracija</button>
+    <button onclick="window.location='overview.html'">Izkazanje</button>
+    <button onclick="window.location='declaration.html'">Deklaracija Nezaležnosti</button>
+    <button onclick="window.location='government.html'">Vlada & Administracija</button>
     <button onclick="window.location='index.html'">Anglijska Versija</button>
   </div>
 
-  </div>
 </body>
 </html>
