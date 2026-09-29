@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interslavic Keyboard</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 15px;
+            font-size: 18px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            resize: vertical;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        textarea:focus {
+            border-color: #3498db;
+        }
+        .shortcuts {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-around;
+            background: #ecf0f1;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .shortcut-item {
+            font-weight: bold;
+        }
+        .shortcut-item span {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Interslavic Keyboard</h1>
+    
+    <div class="container">
+        <textarea id="keyboard" placeholder="Start typing here... Use c=, s=, z=, or e= for special characters."></textarea>
+   
+    </div>
+
+    <script>
+        const textarea = document.getElementById('keyboard');
+
+        const replacements = {
+            'c=': 'č',
+            's=': 'š',
+            'z=': 'ž',
+            'e=': 'ě',
+            'C=': 'Č',
+            'S=': 'Š',
+            'Z=': 'Ž',
+            'E=': 'Ě'
+        };
+
+        textarea.addEventListener('input', (e) => {
+            let value = textarea.value;
+            const selectionStart = textarea.selectionStart;
+            
+            // Check the 2 characters before the current cursor position
+            const positionToCheck = selectionStart - 2;
+            if (positionToCheck >= 0) {
+                const targetPair = value.substring(positionToCheck, selectionStart);
+                
+                if (replacements[targetPair]) {
+                    const replacedChar = replacements[targetPair];
+                    
+                    // Reconstruct the text with the replacement
+                    textarea.value = value.substring(0, positionToCheck) + replacedChar + value.substring(selectionStart);
+                    
+                    // Reset cursor position directly after the newly inserted character
+                    textarea.selectionStart = textarea.selectionEnd = positionToCheck + 1;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
