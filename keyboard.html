@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interslavic Keyboard</title>
+    <title>Protivostavska Klaviatura</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -12,16 +12,39 @@
             padding: 0 20px;
             background-color: #f5f7fa;
             color: #333;
+            transition: background-color 0.3s, color 0.3s;
         }
         h1 {
             text-align: center;
             color: #2c3e50;
+            transition: color 0.3s;
+        }
+        .header-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .toggle-btn {
+            position: absolute;
+            right: 0;
+            background: #2c3e50;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background-color 0.3s, color 0.3s;
         }
         .container {
             background: white;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
         }
         textarea {
             width: 100%;
@@ -33,39 +56,65 @@
             resize: vertical;
             box-sizing: border-box;
             outline: none;
-            transition: border-color 0.3s;
+            background-color: #ffffff;
+            color: #333;
+            transition: border-color 0.3s, background-color 0.3s, color 0.3s;
         }
         textarea:focus {
             border-color: #3498db;
         }
-        .shortcuts {
-            margin-top: 15px;
-            display: flex;
-            justify-content: space-around;
-            background: #ecf0f1;
-            padding: 10px;
-            border-radius: 6px;
-            font-size: 14px;
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #121214;
+            color: #e3e3e6;
         }
-        .shortcut-item {
-            font-weight: bold;
+        body.dark-mode h1 {
+            color: #ffffff;
         }
-        .shortcut-item span {
-            color: #e74c3c;
+        body.dark-mode .toggle-btn {
+            background: #ffffff;
+            color: #121214;
+        }
+        body.dark-mode .container {
+            background: #1a1a1e;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            border: 1px solid #2a2a30;
+        }
+        body.dark-mode textarea {
+            background-color: #222227;
+            color: #ffffff;
+            border: 2px solid #3a3a42;
+        }
+        body.dark-mode textarea:focus {
+            border-color: #3498db;
         }
     </style>
 </head>
 <body>
 
-    <h1>Interslavic Keyboard</h1>
+    <div class="header-container">
+        <h1 style="white-space: pre-line;">Protivostavska Klaviatura</h1>
+        <button class="toggle-btn" id="themeToggle">Dark Mode</button>
+    </div>
     
     <div class="container">
-        <textarea id="keyboard" placeholder="Start typing here... Use c=, s=, z=, or e= for special characters."></textarea>
-   
+        <textarea id="keyboard" placeholder="Pišite tekst tu, upotrěbjajte c=, s=, z=, i e= aby pisati č, š, ž, i ě"></textarea>
     </div>
 
     <script>
         const textarea = document.getElementById('keyboard');
+        const themeToggle = document.getElementById('themeToggle');
+
+        // Theme Toggle Logic
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.innerText = 'Light Mode';
+            } else {
+                themeToggle.innerText = 'Dark Mode';
+            }
+        });
 
         const replacements = {
             'c=': 'č',
